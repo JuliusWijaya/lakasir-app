@@ -101,7 +101,8 @@
 
                         <div class="mt-3">
                             <button type="submit" class="btn btn-md btn-primary btn-sm">SIMPAN</button>
-                            <a href="{{ route('items.index') }}" wire:navigate class="btn btn-md btn-warning btn-sm">
+                            <a href="{{ route('adm.items.index') }}" wire:navigate
+                                class="btn btn-md btn-warning btn-sm">
                                 KEMBALI
                             </a>
                         </div>

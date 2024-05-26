@@ -2,6 +2,7 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <img src="{{ asset('Assets/img/cashier-counter.png') }}" alt="Cashier Machine">
         <div class="sidebar-brand-text mx-3">LA KASIR</div>
     </a>
 
@@ -10,7 +11,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <x-nav-link :active="request()->routeIs('dashboard')" href="{{ route('dashboard') }}">
+        <x-nav-link href="{{ route('adm.dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
         </x-nav-link>
@@ -34,37 +35,39 @@
 
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item {{ request()->routeIs('categories.*') ? 'active' : '' }}" href="/categories"
-                    wire:navigate>
+                <a class="collapse-item {{ request()->routeIs('adm/categories.*') ? 'active' : '' }}"
+                    href="{{ url('adm/categories') }}" wire:navigate>
                     Category
                 </a>
 
-                <a class="collapse-item {{ request()->routeIs('items.*') ? 'active' : '' }}" href="/items"
-                    wire:navigate>
+                <a class="collapse-item {{ request()->routeIs('adm/items.*') ? 'active' : '' }}"
+                    href="{{ url('adm/items') }}" wire:navigate>
                     Item
                 </a>
             </div>
         </div>
     </li>
 
-    <!-- Nav Item - Charts -->
     <li class="nav-item">
         <x-nav-link href="#">
-            <i class="fas fa-fw fa-chart-area"></i>
+            <i class="fas fa-fw fa-shopping-cart"></i>
             <span>Transaksi</span>
         </x-nav-link>
     </li>
 
-    <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <x-nav-link href="#">
-            <i class="fas fa-fw fa-table"></i>
+        <x-nav-link href="{{ url('adm/reports/sale') }}">
+            <i class="fas fa-fw fa-file-invoice"></i>
             <span>Report Penjualan</span>
         </x-nav-link>
     </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    <li class="nav-item">
+        <x-nav-link :active="request()->routeIs('adm.users.index')" href="{{ url('adm/users') }}">
+            <i class="fas fa-fw fa-users-cog"></i>
+            <span>User Management</span>
+        </x-nav-link>
+    </li>
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

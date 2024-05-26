@@ -19,11 +19,13 @@ Route::get('/about', App\Livewire\About::class)->name('about');
 Route::get('/contact', App\Livewire\Contact::class)->name('contact');
 Route::get('/login', App\Livewire\Auth\Login::class)->name('login');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth', 'prefix' => 'adm', 'as' => 'adm.'], function () {
     Route::get('/dashboard', App\Livewire\Admin\Dashboard::class)->name('dashboard');
     Route::get('/items', App\Livewire\Items\Index::class)->name('items.index');
-    Route::get('/create', App\Livewire\Items\Create::class)->name('items.create');
-    Route::get('/edit/{item}', App\Livewire\Items\Edit::class)->name('items.edit');
+    Route::get('/item/create', App\Livewire\Items\Create::class)->name('items.create');
+    Route::get('/item/edit/{item}', App\Livewire\Items\Edit::class)->name('items.edit');
 
-    Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
+    Route::get('categories', App\Livewire\Categories\Index::class)->name('categories.index');
+    Route::get('category/edit/{category}', App\Livewire\Categories\Edit::class)->name('categories.edit');
 });
+Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
